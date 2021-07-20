@@ -7,4 +7,5 @@ RUN unzip vault-secrets-gen_0.1.1_linux_amd64.zip
 
 FROM vault:1.6.2
 
-COPY --from=builder /home/curl_user/vault-secrets-gen_v0.1.1 /bin/vault-secrets-gen
+RUN mkdir -p /etc/vault/plugins && chmod 777 /etc/vault/plugins
+COPY --from=builder /home/curl_user/vault-secrets-gen_v0.1.1 /etc/vault/plugins/vault-secrets-gen
